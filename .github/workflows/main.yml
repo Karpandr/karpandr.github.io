@@ -3,7 +3,6 @@ name: Test, Lint, Build and Deploy on Github Pages
 on:
   push:
     branches: ["master", "main"]
-
   workflow_dispatch: # Позволяет запустить этот рабочий процесс вручную на вкладке Actions
 
 permissions:
