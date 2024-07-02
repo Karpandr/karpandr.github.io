@@ -1,4 +1,5 @@
 import React from 'react';
+import s from "./ProductItems.module.sass"
 
 interface ProductItemsProps {
   price: number; // Assuming price is a number
@@ -9,11 +10,13 @@ interface ProductItemsProps {
 
 const ProductItems = ({ price, image, title, description }: ProductItemsProps) => {
   return (
-    <div>
-      <img src={image} alt={title} />
+    <div className={s['product-items']}>
+      <img src={image} alt={title} className={s['product-items__image']} />
       <p>{title}</p>
-      <p>{description}</p>
-      <p>{price}</p>
+      <p className={s['product-items__description']}>{description}
+      </p>
+      <p>{price}$</p>
+      <button>Add To Basket</button>
     </div>
   );
 };
