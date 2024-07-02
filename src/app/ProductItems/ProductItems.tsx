@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./ProductItems.module.sass"
+import Basket from '../Basket';
 
 interface ProductItemsProps {
   price: number; // Assuming price is a number
@@ -16,7 +17,7 @@ const ProductItems = ({ price, image, title, description }: ProductItemsProps) =
       <p className={s['product-items__description']}>{description}
       </p>
       <p>{price}$</p>
-      <button>Add To Basket</button>
+      <Basket count={0} />
     </div>
   );
 };
