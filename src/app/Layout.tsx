@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import ProductItems from './ProductItems/ProductItems';
-
 
 const Layout = () => {
   return (
