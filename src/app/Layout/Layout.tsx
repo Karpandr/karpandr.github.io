@@ -1,12 +1,13 @@
 import React from 'react';
-import Header from './Header';
-import ProductCard from './ProductCard/ProductCard';
+import Header from '../Header/Header';
+import ProductCard from '../ProductCard/ProductCard';
+import s from '../../app/App.module.sass';
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <div className="App-main">
+      <div className={s['app__main']}>
         <ProductCard
           price={1055}
           image={"https://cdn.3dmodels.org/wp-content/uploads/Apple/588_Apple_iPhone_15_Plus_Blue/Apple_iPhone_15_Plus_Blue_1000_0001.jpg"}
