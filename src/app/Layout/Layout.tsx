@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header';
-import ProductCard from './ProductCard/ProductCard';
+import Header from '../Header/Header';
+import ProductCard from '../ProductCard/ProductCard';
 
 const Layout = () => {
   return (
