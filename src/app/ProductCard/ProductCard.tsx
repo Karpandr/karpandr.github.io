@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./ProductCard.module.sass"
-import Basket from '../Basket';
+import Basket from '../Basket/Basket';
 
 interface ProductCardProps {
   price: number; // Assuming price is a number
