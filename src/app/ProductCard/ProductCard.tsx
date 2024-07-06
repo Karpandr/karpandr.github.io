@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "./ProductCard.module.sass"
+import s from './ProductCard.module.sass';
 import Basket from '../Basket/Basket';
 
 interface ProductCardProps {
