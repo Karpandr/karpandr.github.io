@@ -6,28 +6,27 @@ const meta: Meta<typeof Modal> = {
     title: 'Components/Modal',
     component: Modal,
     tags: ['autodocs'],
-    argTypes: {
-        visible: { control: 'boolean' },
-        onClose: { action: 'closed' },
-    },
+    //argTypes are automatically inferred from component so we don't need them
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Modal>;
 
+const ModalContentExample = () => {
+    return <div>This is a modal content</div>;
+};
+
 export const Default: Story = {
     args: {
         visible: true,
-        children: React.createElement('div', null, 'This is a modal content'),
-        onClose: () => { },
+        children: <ModalContentExample />,
     },
 };
 
 export const Hidden: Story = {
     args: {
         visible: false,
-        children: React.createElement('div', null, 'This is a modal content'),
-        onClose: () => { },
+        children: <ModalContentExample />,
     },
 };
