@@ -6,7 +6,10 @@ const meta: Meta<typeof Modal> = {
     title: 'Components/Modal',
     component: Modal,
     tags: ['autodocs'],
-    //argTypes are automatically inferred from component so we don't need them
+    /* 
+    argTypes are automatically inferred from component thanks to 'autodocs',
+    we don't need custom implementation of argTypes for now so we don't need to use them
+    */
 };
 
 export default meta;
