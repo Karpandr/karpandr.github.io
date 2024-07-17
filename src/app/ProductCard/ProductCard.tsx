@@ -2,6 +2,8 @@ import React from 'react';
 import s from './ProductCard.module.sass';
 import Basket from '../Basket/Basket';
 
+
+
 interface ProductCardProps {
   price: number; // Assuming price is a number
   image: string; // Assuming image is a string URL
