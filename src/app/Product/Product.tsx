@@ -1,9 +1,10 @@
 import React from 'react'
 import Button from 'src/stories/Button';
+import s from "./Product.module.sass"
 
-interface AllProductDetailsProps {
+export interface ProductProps {
     price: number;
-    image: string;
+    images: string[];
     category: string;
     title: string;
     description: string;
@@ -11,10 +12,10 @@ interface AllProductDetailsProps {
 }
 
 
-export default function AllProductDetails({ price, image, category, title, description }: AllProductDetailsProps) {
+export default function Product({ price, images, category, title, description }: ProductProps) {
     return (
-        <div>
-            <img src={image} alt={title} />
+        <div className={s.container}>
+            <img src={images[0]} alt={title} />
             <h1>{category}</h1>
             <p>{title}</p>
             <p>{description} </p>
