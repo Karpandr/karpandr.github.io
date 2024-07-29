@@ -2,8 +2,6 @@ import React from 'react';
 import s from './ProductCard.module.sass';
 import Basket from '../Basket/Basket';
 
-
-
 interface ProductCardProps {
   price: number; // Assuming price is a number
   image: string; // Assuming image is a string URL
@@ -16,8 +14,7 @@ const ProductCard = ({ price, image, title, description }: ProductCardProps) => 
     <div className={s['product-card']}>
       <img src={image} alt={title} className={s['product-card__image']} />
       <p>{title}</p>
-      <p className={s['product-card__description']}>{description}
-      </p>
+      <p className={s['product-card__description']}>{description}</p>
       <p>{price}$</p>
       <Basket count={0} />
     </div>
