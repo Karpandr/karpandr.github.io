@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Button from 'src/stories/Button';
-import s from "./Product.module.sass"
+
 
 export interface ProductProps {
     price: number;
@@ -13,15 +13,14 @@ export interface ProductProps {
 
 export default function Product({ price, images, category, title, description }: ProductProps) {
     return (
-        <div className={s.container}>
-            <img src={images[0]} alt={title} />
+        <div>
+            {images.map((image, index) => (<img key={index} src={image} alt={`${title} image ${index + 1}`} />))}
             <h1>{category}</h1>
             <p>{title}</p>
             <p>{description} </p>
             <p>{price}$</p>
             <Button label="Shop Now" />
         </div>
-    )
-};
+    )};
 
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './BasketProducts.module.sass';
 
 export default function BasketProduct() {
     return (
-        <div>
-          <button>Delete</button>
-        </div>
+        <div className={styles.basketProduct}>
+        <button className={styles.deleteButton}>Delete</button>
+    </div>
     )
 }
