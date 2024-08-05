@@ -1,26 +1,32 @@
 import React from 'react';
-import Button from 'src/stories/Button';
+import Basket from '../Basket/Basket';
+import s from './Product.module.sass';
 
-
-export interface ProductProps {
-    price: number;
-    images: string[];
-    category: string;
-    title: string;
-    description: string;
+interface ProductProps {
+  price: number;
+  images: string[];
+  category: string;
+  title: string;
+  description: string;
 }
 
-
-export default function Product({ price, images, category, title, description }: ProductProps) {
-    return (
-        <div>
-            {images.map((image, index) => (<img key={index} src={image} alt={`${title} image ${index + 1}`} />))}
-            <h1>{category}</h1>
-            <p>{title}</p>
-            <p>{description} </p>
-            <p>{price}$</p>
-            <Button label="Shop Now" />
+const Product = ({ price, images, category, title, description }: ProductProps) => {
+  return (
+    <div className={s['product']}>
+      <div className={s['product__images-carousel']}>
+        <div className={s['product__images-container']}>
+          {images.map((image, index) => (
+            <img key={index} src={image} alt={`${title} image ${index + 1}`} />
+          ))}
         </div>
-    )};
+      </div>
+      <h1>{category}</h1>
+      <p>{title}</p>
+      <p>{description}</p>
+      <p>{price}$</p>
+      <Basket count={0} />
+    </div>
+  );
+};
 
-
+export default Product;

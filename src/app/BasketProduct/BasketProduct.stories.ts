@@ -1,6 +1,5 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
-import BasketProduct from './index'; // Ensure this path is correct
+import BasketProduct from './BasketProduct';
 
 const meta: Meta<typeof BasketProduct> = {
   title: 'Components/BasketProduct',

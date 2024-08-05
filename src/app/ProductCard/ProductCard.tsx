@@ -3,10 +3,10 @@ import s from './ProductCard.module.sass';
 import Basket from '../Basket/Basket';
 
 interface ProductCardProps {
-  price: number; // Assuming price is a number
-  image: string; // Assuming image is a string URL
-  title: string; // Assuming title is a string
-  description: string; // Assuming description is a string
+  price: number;
+  image: string;
+  title: string;
+  description: string;
 }
 
 const ProductCard = ({ price, image, title, description }: ProductCardProps) => {
