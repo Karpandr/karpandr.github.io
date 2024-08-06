@@ -1,10 +1,10 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
-import s from '../../app/App.module.sass';
+import Logo from '../../entities/Logo/Logo';
+import s from './Header.module.sass';
 
 const Header = () => {
   return (
-    <header className={s['app__header']}>
+    <header className={s['header']}>
       <Logo />
       <h3>Super store</h3>
     </header>
