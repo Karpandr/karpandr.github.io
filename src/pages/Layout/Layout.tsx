@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from '../Header/Header';
-import ProductCard from '../ProductCard/ProductCard';
-import s from '../../app/App.module.sass';
+import s from './Layout.module.sass';
+import ProductCard from '../../entities/ProductCard/ProductCard';
+import Header from '../../widgets/Header/Header';
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <div className={s['app__main']}>
+      <div className={s['layout']}>
         <ProductCard
           price={1055}
           image={
