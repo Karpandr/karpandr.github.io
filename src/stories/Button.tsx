@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'clsx';
 import s from './button.module.sass';
 
 interface ButtonProps {
@@ -30,12 +31,7 @@ interface ButtonProps {
 export default function Button({ primary = false, size = 'medium', backgroundColor, label, ...props }: ButtonProps) {
   const mode = primary ? s.primary : s.secondary;
   return (
-    <button
-      type="button"
-      className={[s.button, s[size], mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
+    <button type="button" className={cn(s.button, s[size], mode)} style={{ backgroundColor }} {...props}>
       {label}
     </button>
   );
