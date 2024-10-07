@@ -7,10 +7,9 @@ export const resources = {
       errors: {
         unexpected_error: 'Unexpected error. We automatically register errors and will fix everything soon',
         'Failed to fetch': 'Connection error. Go to the server directory and start the server using the start script',
-        is_required: 'Required field',
-        invalid_email_address: 'Invalid email address',
+        ERR_IS_REQUIRED: 'Required field',
         too_short_password: 'The password is too short',
-        not_same_password: "Passwords don't match",
+        ERR_NOT_SAME_PASSWORD: "Passwords don't match",
         ERR_INCORRECT_EMAIL_OR_PASSWORD: 'Incorrect password or email',
         ERR_NOT_FOUND: 'An entity with this id was not found',
         ERR_USER_NOT_REGISTER: 'Register to access this feature',
@@ -57,17 +56,9 @@ export const resources = {
             submit: 'Sign out',
           },
         },
-        HomeScreen: {
-          title: 'Home',
-          desc: `Welcome to the react course from otus!\n\nThis is a training project of the course. Here you will find materials for lectures, homework, as well as examples of some complex components.\n\nThe project is written in **typescript**, **redux**, **redux-saga** using **webpack**. In it , you can spy on the implementation of the dark/light theme, locale switching, navigation, token exchange between browser tabs.\n\nThe project also has its own server implemented on **graphql**, **apollo**, **express** and using a json file as a database (in real development, do not do this, it's just to save you from installing the database). Interaction with the server is implemented, namely the ability to register a user, log in to an account, but do not forget to start the server locally - use the _start:client_ and _start:server_ commands.\n\nWelcome and good luck in learning!`,
-        },
-        TeachersScreen: {
-          title: 'Teachers',
-          desc: "Someday there will be teachers' cards here, but that's not for sure",
-        },
       },
       forms: {
-        AuthForm: {
+        LoginForm: {
           email: {
             title: 'Email',
             placeholder: 'Enter email',
@@ -76,8 +67,12 @@ export const resources = {
             title: 'Password',
             placeholder: 'Enter password',
           },
+          submitButton: {
+            title: 'Sign in',
+          },
         },
         ChangePasswordForm: {
+          title: 'Changing Password',
           password: {
             title: 'Password',
             placeholder: 'Enter password',
@@ -90,14 +85,12 @@ export const resources = {
             title: 'Repeat password',
             placeholder: 'Repeat password',
           },
-        },
-        EmailForm: {
-          email: {
-            title: 'Email',
-            placeholder: 'Enter email',
+          submitButton: {
+            title: 'Change password',
           },
         },
-        ProfileForm: {
+        UserForm: {
+          title: 'User',
           name: {
             title: 'Nickname',
             placeholder: 'Come up with a pseudonym for yourself',
@@ -106,15 +99,38 @@ export const resources = {
             title: 'About',
             placeholder: 'Write something about yourself',
           },
-        },
-        RepeatPasswordForm: {
-          password: {
-            title: 'Password',
-            placeholder: 'Enter password',
+          submitButton: {
+            title: 'Save',
           },
-          repeatPassword: {
-            title: 'Repeat password',
-            placeholder: 'Repeat password',
+        },
+        ProductForm: {
+          title: 'Product',
+          name: {
+            title: 'Name',
+            placeholder: 'Enter product name',
+          },
+          description: {
+            title: 'Description',
+            placeholder: 'Enter product description',
+          },
+          price: {
+            title: 'Price',
+            placeholder: 'Enter product price',
+          },
+          oldPrice: {
+            title: 'Old Price',
+            placeholder: 'Enter old product price',
+          },
+          image: {
+            title: 'Image',
+            placeholder: 'Enter product image URL',
+          },
+          category: {
+            title: 'Product category',
+            placeholder: 'Enter product category',
+          },
+          submitButton: {
+            title: 'Save',
           },
         },
       },
@@ -185,10 +201,9 @@ export const resources = {
         unexpected_error: 'Неожиданная ошибка. Мы автоматически регистрируем ошибки и скоро все исправим',
         'Failed to fetch':
           'Ошибка соединения. Перейдите в директорию server и запустите сервер с помощью скрипта start',
-        is_required: 'Обязательное поле',
-        invalid_email_address: 'Некорректный email адрес',
+        ERR_IS_REQUIRED: 'Обязательное поле',
         too_short_password: 'Слишком короткий пароль',
-        not_same_password: 'Пароли не совпадают',
+        ERR_NOT_SAME_PASSWORD: 'Пароли не совпадают',
         ERR_INCORRECT_EMAIL_OR_PASSWORD: 'Некорректный пароль или email',
         ERR_NOT_FOUND: 'Сущность с таким id не найдена',
         ERR_USER_NOT_REGISTER: 'Зарегистрируйтесь, чтобы получить доступ к этой функции',
@@ -236,17 +251,9 @@ export const resources = {
             submit: 'Зарегистрироваться',
           },
         },
-        HomeScreen: {
-          title: 'Главная',
-          desc: `Приветствую на курсе по react от otus!\n\nЭто учебный проект курса. Здесь вы найдете материалы к лекциям, домашние задания, а так же примеры некоторых сложных компонентов.\n\nПроект написан на **typescript**, **redux**, **redux-saga** с использованием **webpack**. В нем можно подсмотреть реализацию темной/светлой темы, переключение локали, навигацию, обмен токен между вкладками браузера.\n\nТак же в проекте есть свой сервер, реализованный на **graphql**, **apollo**, **express** и использующий в качестве базы данных json файл (в реальной разработке не делайте так, это только чтобы избавить вас от установки базы данных). Реализовано взаимодействие с сервером, а именно возможность зарегистрировать пользователя, войти в учетную запись, но не забудьте запустить сервер локально - используйте команды _start:client_ и _start:server_.\n\nДобро пожаловать и удачи в обучении!`,
-        },
-        TeachersScreen: {
-          title: 'Преподаватели',
-          desc: 'Когда-нибудь здесь появятся карточки преподавателей, но это не точно',
-        },
       },
       forms: {
-        AuthForm: {
+        LoginForm: {
           email: {
             title: 'Email',
             placeholder: 'Укажите email',
@@ -255,8 +262,12 @@ export const resources = {
             title: 'Пароль',
             placeholder: 'Укажите пароль',
           },
+          submitButton: {
+            title: 'Войти',
+          },
         },
         ChangePasswordForm: {
+          title: 'Изменение пароля',
           password: {
             title: 'Пароль',
             placeholder: 'Укажите пароль',
@@ -269,14 +280,12 @@ export const resources = {
             title: 'Повторите пароль',
             placeholder: 'Повторите пароль',
           },
-        },
-        EmailForm: {
-          email: {
-            title: 'Email',
-            placeholder: 'Укажите email',
+          submitButton: {
+            title: 'Изменить пароль',
           },
         },
-        ProfileForm: {
+        UserForm: {
+          title: 'Пользователь',
           name: {
             title: 'Псевдоним',
             placeholder: 'Придумайте себе псевдоним',
@@ -285,15 +294,38 @@ export const resources = {
             title: 'О себе',
             placeholder: 'Напишите что-нибудь о себе',
           },
-        },
-        RepeatPasswordForm: {
-          password: {
-            title: 'Пароль',
-            placeholder: 'Укажите пароль',
+          submitButton: {
+            title: 'Сохранить',
           },
-          repeatPassword: {
-            title: 'Повторите пароль',
-            placeholder: 'Повторите пароль',
+        },
+        ProductForm: {
+          title: 'Продукт',
+          name: {
+            title: 'Название',
+            placeholder: 'Введите название продукта',
+          },
+          description: {
+            title: 'Описание',
+            placeholder: 'Введите описание',
+          },
+          price: {
+            title: 'Цена',
+            placeholder: 'Введите цену',
+          },
+          oldPrice: {
+            title: 'Старая цена',
+            placeholder: 'Введите старую цену',
+          },
+          image: {
+            title: 'Описание',
+            placeholder: 'Введите описание',
+          },
+          category: {
+            title: 'Кстегория',
+            placeholder: 'Введите категорию',
+          },
+          submitButton: {
+            title: 'Сохранить',
           },
         },
       },
