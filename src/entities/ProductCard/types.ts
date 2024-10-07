@@ -49,7 +49,7 @@ const getRandomElement = <T>(array: T[]): T | undefined => {
   return array[randomIndex];
 };
 
-const categories: Category[] = [
+export const categories: Category[] = [
   { id: '1', name: 'Телевизоры' },
   { id: '2', name: 'Телефоны' },
   { id: '3', name: 'Игровые консоли' },

@@ -3,7 +3,7 @@ import React from 'react';
 import ModalPortal from './ModalPortal';
 
 const meta: Meta<typeof ModalPortal> = {
-  title: 'Components/Modal',
+  title: 'Components/ModalPortal',
   component: ModalPortal,
   tags: ['autodocs'],
   /* 
