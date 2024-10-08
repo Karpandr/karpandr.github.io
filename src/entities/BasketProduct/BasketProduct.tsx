@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './BasketProduct.module.sass';
+import s from './BasketProduct.module.sass';
 
 const BasketProduct = () => {
   return (
-    <div className={styles['basket-product']}>
-      <button className={styles['basket-product__delete-button']}>Delete</button>
+    <div className={s['basket-product']}>
+      <button className={s['basket-product__delete-button']}>Delete</button>
     </div>
   );
 };
