@@ -1,14 +1,18 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import s from './Basket.module.sass';
 
 interface BasketProps {
   count: number;
 }
 
 const Basket = ({ count }: BasketProps) => {
+  const { t } = useTranslation();
+
   return (
     <div>
       {count === 0 ? (
-        <button>Add To Basket</button>
+        <button className={s.root}>{t`components.Basket.title`}</button>
       ) : (
         <div>
           <button>+</button>
