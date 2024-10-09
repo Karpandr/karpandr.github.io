@@ -1,4 +1,4 @@
-import i18n, { InitOptions } from 'i18next';
+import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { resources } from './resources';
 
@@ -21,6 +21,6 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
-  } as InitOptions);
+  });
 
 export default i18n;

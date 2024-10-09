@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import { FormikHandlers } from 'formik';
 import { FormProps } from './FormTypes';
 import { valueType } from 'antd/es/statistic/utils';
