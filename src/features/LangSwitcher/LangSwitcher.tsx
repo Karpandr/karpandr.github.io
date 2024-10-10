@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import cn from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Locale } from '../../app/localization';
-import s from './LangSwitcher.sass';
+import s from './LangSwitcher.module.sass';
 
 export type ThemeSwitcherProps = {
   className?: string;
