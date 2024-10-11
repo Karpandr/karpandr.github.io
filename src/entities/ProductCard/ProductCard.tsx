@@ -27,7 +27,7 @@ const ProductCard = ({ observerClassName, id, price, image, name, description }:
         count={count}
         productId={id}
         onIncrease={() => setCount(count + 1)}
-        onDecrease={() => setCount(count - 1 === -1 ? 0 : count - 1)}
+        onDecrease={() => setCount(count ? count - 1 : count)}
       />
     </div>
   );

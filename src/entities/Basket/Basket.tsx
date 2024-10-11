@@ -18,9 +18,9 @@ const Basket = ({ count, productId, onIncrease, onDecrease }: BasketProps) => {
         <button className={s.root} onClick={() => onIncrease(productId)}>{t`components.Basket.title`}</button>
       ) : (
         <div>
-          <button onClick={() => onIncrease(productId)}>+</button>
-          <input type="text" value={count} readOnly />
           <button onClick={() => onDecrease(productId)}>-</button>
+          <input type="text" value={count} readOnly />
+          <button onClick={() => onIncrease(productId)}>+</button>
         </div>
       )}
     </div>
