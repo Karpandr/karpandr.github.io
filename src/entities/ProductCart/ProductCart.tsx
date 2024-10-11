@@ -15,9 +15,9 @@ interface ProductCartProps {
   onCountChange(id: string, count: number): void;
 }
 
-export const ProductCart = ({ id, name, price, image, description, ...props }: ProductCartProps) => {
-  const [count, setCount] = useState<number>(props.count);
-  useEffect(() => props.onCountChange(id, count), [count, id, props]);
+export const ProductCart = ({ id, name, price, image, description, onCountChange, count }: ProductCartProps) => {
+  const [countProduct, setCountProduct] = useState<number>(count);
+  useEffect(() => onCountChange(id, countProduct), [countProduct, id, onCountChange]);
 
   return (
     <div className={cn(s['product-card'])}>
@@ -28,8 +28,8 @@ export const ProductCart = ({ id, name, price, image, description, ...props }: P
       <Basket
         count={count}
         productId={id}
-        onIncrease={() => setCount(count + 1)}
-        onDecrease={() => setCount(count - 1 === -1 ? 0 : count - 1)}
+        onIncrease={() => setCountProduct(countProduct + 1)}
+        onDecrease={() => setCountProduct(countProduct ? countProduct - 1 : countProduct)}
       />
     </div>
   );

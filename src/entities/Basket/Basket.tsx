@@ -9,18 +9,18 @@ interface BasketProps {
   onDecrease?: (id: string) => void;
 }
 
-const Basket = ({ count, productId, ...props }: BasketProps) => {
+const Basket = ({ count, productId, onIncrease, onDecrease }: BasketProps) => {
   const { t } = useTranslation();
 
   return (
     <div>
       {count === 0 ? (
-        <button className={s.root} onClick={() => props.onIncrease(productId)}>{t`components.Basket.title`}</button>
+        <button className={s.root} onClick={() => onIncrease(productId)}>{t`components.Basket.title`}</button>
       ) : (
         <div>
-          <button onClick={() => props.onIncrease(productId)}>+</button>
+          <button onClick={() => onIncrease(productId)}>+</button>
           <input type="text" value={count} readOnly />
-          <button onClick={() => props.onDecrease(productId)}>-</button>
+          <button onClick={() => onDecrease(productId)}>-</button>
         </div>
       )}
     </div>

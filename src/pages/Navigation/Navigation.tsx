@@ -1,9 +1,8 @@
 import React, { FC, ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Portal } from 'src/shared/Portal/Portal';
+import { ModalFormWrapper } from 'src/shared/windows/ModalFormWrapper/ModalFormWrapper';
 import { ProductForm } from 'src/features/forms/ProductForm/ProductForm';
-import Modal from 'src/widgets/Modal/Modal';
 import s from './Navigation.module.sass';
 
 const navigationItems = [
@@ -17,32 +16,21 @@ export const Navigation: FC = (): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const navigationModalClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    setIsVisible(true);
+  };
 
   return (
     <div className={s.root}>
       {navigationItems.map((i) => (
         <div className={s.navitem} key={i.name} onClick={() => navigate(i.path)}>
-          {i.name === 'navigation.product' ? (
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsVisible(true);
-              }}
-            >
-              {t(i.name)}
-            </div>
-          ) : (
-            t(i.name)
-          )}
+          {i.name === 'navigation.product' ? <div onClick={navigationModalClick}>{t(i.name)}</div> : t(i.name)}
         </div>
       ))}
-      {isVisible && (
-        <Portal>
-          <Modal visible={isVisible} onClose={() => setIsVisible(false)}>
-            <ProductForm />
-          </Modal>
-        </Portal>
-      )}
+      <ModalFormWrapper isVisible={isVisible} onClose={() => setIsVisible(false)}>
+        <ProductForm />
+      </ModalFormWrapper>
     </div>
   );
 };
