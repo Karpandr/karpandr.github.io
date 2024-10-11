@@ -17,7 +17,7 @@ interface ProductCartProps {
 
 export const ProductCart = ({ id, name, price, image, description, onCountChange, count }: ProductCartProps) => {
   const [countProduct, setCountProduct] = useState<number>(count);
-  useEffect(() => onCountChange(id, countProduct), [countProduct, id, onCountChange]);
+  useEffect(() => onCountChange(id, countProduct), [countProduct, id]);
 
   return (
     <div className={cn(s['product-card'])}>
