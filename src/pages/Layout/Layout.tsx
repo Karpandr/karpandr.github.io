@@ -1,10 +1,9 @@
 import React from 'react';
 import s from './Layout.module.sass';
-import ProductCard from '../../entities/ProductCard/ProductCard';
-import Header from '../../widgets/Header/Header';
+import ProductCard from 'src/entities/ProductCard/ProductCard';
+import Header from 'src/widgets/Header/Header';
 
 const Layout = () => {
-  // const { theme } = useThemeContext();
   return (
     <>
       <Header />
