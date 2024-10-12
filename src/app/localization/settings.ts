@@ -1,4 +1,4 @@
-import i18n, { InitOptions } from 'i18next';
+import i18n, { InitOptions, use } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { resources } from './resources';
 
@@ -9,8 +9,7 @@ export enum Locale {
   en = 'en',
 }
 
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
+use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
     lng: localStorage.getItem(LANG_STORAGE_KEY) || Locale.ru,

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Layout.module.sass';
 import ProductList from 'src/entities/ProductList/ProductList';
-import Header from '../../widgets/Header/Header';
+import Header from 'src/widgets/Header/Header';
 
 const Layout = () => {
   return (
