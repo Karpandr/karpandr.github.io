@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import s from './ProductCart.module.sass';
-import Basket from '../Basket/Basket';
-import { Category } from '../ProductCard/types';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from 'react';
 import cn from 'clsx';
+import Basket from '../Basket/Basket';
+import { Category, ProductInCart } from '../ProductCard/types';
+import { useDispatch } from 'react-redux';
+import { cartActions } from 'src/app/store/cart';
+import s from './ProductCart.module.sass';
 
 interface ProductCartProps {
   id: string;
@@ -12,12 +15,24 @@ interface ProductCartProps {
   description: string;
   category: Category;
   count: number;
-  onCountChange(id: string, count: number): void;
 }
 
-export const ProductCart = ({ id, name, price, image, description, onCountChange, count }: ProductCartProps) => {
-  const [countProduct, setCountProduct] = useState<number>(count);
-  useEffect(() => onCountChange(id, countProduct), [countProduct]);
+export const ProductCart = ({ id, name, price, image, description, count }: ProductCartProps) => {
+  const dispatch = useDispatch();
+
+  const onIncrease = () => {
+    dispatch(cartActions.addProduct({ id, price, image, name, description, count: count + 1 } as ProductInCart));
+  };
+
+  const onDecrease = () => {
+    dispatch(
+      cartActions.addProduct({ id, price, image, name, description, count: count ? count - 1 : count } as ProductInCart)
+    );
+  };
+
+  const onDeleteClick = () => {
+    dispatch(cartActions.delProduct(id));
+  };
 
   return (
     <div className={cn(s['product-card'])}>
@@ -25,12 +40,7 @@ export const ProductCart = ({ id, name, price, image, description, onCountChange
       <p>{name}</p>
       <p className={s['product-card__description']}>{description}</p>
       <p>{price}$</p>
-      <Basket
-        count={countProduct}
-        productId={id}
-        onIncrease={() => setCountProduct(countProduct + 1)}
-        onDecrease={() => setCountProduct(countProduct ? countProduct - 1 : countProduct)}
-      />
+      <Basket count={count} onIncrease={onIncrease} onDecrease={onDecrease} onDeleteClick={onDeleteClick} />
     </div>
   );
 };
