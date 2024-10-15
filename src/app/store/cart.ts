@@ -7,22 +7,14 @@ const cartSlice = createSlice({
   initialState: localStorage.getItem('cart') ? (JSON.parse(localStorage.getItem('cart')) as ProductInCart[]) : [],
   reducers: {
     addProduct: (state, { payload: product }) => {
-      const isExists = Boolean(state.find((p) => p.id === product.id));
-      if (isExists) {
-        const tempState = state.slice();
-        tempState.map((p: ProductInCart) => {
-          if (p.id === product.id) {
-            if (product.count === 0) {
-              p = undefined;
-            } else {
-              p.count = product.count;
-            }
-          }
-        });
-        state = tempState.filter((p) => p !== undefined);
+      const existingProduct = state.find((p) => p.id === product.id);
+      if (existingProduct) {
+        existingProduct.count = product.count;
+        if (product.count === 0) {
+          return state.filter((p) => p.id !== product.id);
+        }
       } else {
         state.push(product);
-        return state;
       }
     },
     delProduct: (state, { payload: id }) => {
