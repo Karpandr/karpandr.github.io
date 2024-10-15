@@ -8,8 +8,8 @@ import { IRegisterFormValues } from 'src/features/forms/RegisterForm/RegisterFor
 export const profileSlice = createSlice({
   name: 'profile',
   initialState: {
-    // profile: localStorage.getItem('profile') ? (JSON.parse(localStorage.getItem('profile')) as IProfile) : undefined,
-    profile: undefined,
+    profile: localStorage.getItem('profile') ? (JSON.parse(localStorage.getItem('profile')) as IProfile) : undefined,
+    // profile: undefined,
     errorMessage: undefined,
     errorCode: undefined,
     isLoading: false,

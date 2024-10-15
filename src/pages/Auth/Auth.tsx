@@ -63,6 +63,7 @@ export const Auth: FC<IAuth> = ({ visible }) => {
     dispatch(profileActions.doSagaAuth(values));
   };
 
+  console.log((location.state as NavigationState)?.from);
   if (isProfileLoaded) return <Navigate to={(location.state as NavigationState)?.from || '/'} replace />;
 
   return (
