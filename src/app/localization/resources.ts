@@ -79,6 +79,20 @@ export const resources = {
             title: 'Sign in',
           },
         },
+        RegisterForm: {
+          title: 'Registration',
+          email: {
+            title: 'Email',
+            placeholder: 'Enter email',
+          },
+          password: {
+            title: 'Password',
+            placeholder: 'Enter password',
+          },
+          submitButton: {
+            title: 'Register',
+          },
+        },
         ChangePasswordForm: {
           title: 'Changing Password',
           password: {
@@ -281,6 +295,20 @@ export const resources = {
           },
           submitButton: {
             title: 'Войти',
+          },
+        },
+        RegisterForm: {
+          title: 'Регистрация',
+          email: {
+            title: 'Email',
+            placeholder: 'Укажите email',
+          },
+          password: {
+            title: 'Пароль',
+            placeholder: 'Укажите пароль',
+          },
+          submitButton: {
+            title: 'Зарегистрироваться',
           },
         },
         ChangePasswordForm: {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ProductInCart } from 'src/entities/ProductCard/types';
-import { RootState } from '.';
+import { RootState } from './store';
 
 const cartSlice = createSlice({
   name: 'cart',

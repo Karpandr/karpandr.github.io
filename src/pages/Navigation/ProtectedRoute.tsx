@@ -1,10 +1,8 @@
 /* eslint-disable import/named */
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from 'src/app/store';
 import { Navigate, useLocation, Location } from 'react-router-dom';
-import { profileSelectors } from 'src/app/store/profile';
-import { tokenSelectors } from 'src/app/store/token';
+import { useProfileSelector } from 'src/app/store/profile';
+import { useTokenSelector } from 'src/app/store/token';
 
 export type NavigationState = {
   from?: Location;
@@ -16,8 +14,8 @@ export interface IProtectedRoute {
 }
 
 export const ProtectedRoute: FC<IProtectedRoute> = ({ children, isRestricted = false }) => {
-  const token = useSelector<RootState, RootState['token']>(tokenSelectors.get);
-  const profile = useSelector<RootState, RootState['profile']>(profileSelectors.get);
+  const token = useTokenSelector((state) => state.token);
+  const profile = useProfileSelector((state) => state.profile.profile);
   const location = useLocation();
   if (token) {
     if (!isRestricted) return <>{children}</>;
