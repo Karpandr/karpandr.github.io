@@ -17,5 +17,5 @@ const ModalControl = () => {
     </>
   );
 };
-//todo: translate
+
 export default ModalControl;
