@@ -2,8 +2,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { RootState } from './store';
-import { IProfile, adminProfile } from 'src/entities/Profile/model/profile';
-import { IRegisterFormValues } from 'src/features/forms/RegisterForm/RegisterForm';
+import { IProfile } from 'src/entities/Profile/types';
+import { IAuthFormValues } from 'src/entities/auth-form/ui';
 
 export const profileSlice = createSlice({
   name: 'profile',
@@ -17,8 +17,7 @@ export const profileSlice = createSlice({
   },
   reducers: {
     setProfile: (state, action: PayloadAction<IProfile>) => {
-      const profile = action.payload;
-      state.profile = adminProfile.email === profile.email ? adminProfile : profile;
+      state.profile = action.payload;
       state.isProfileLoaded = true;
     },
     clearProfile: (state) => {
@@ -34,8 +33,7 @@ export const profileSlice = createSlice({
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
-    doSagaAuth: (state, action: PayloadAction<IRegisterFormValues>) => {
-      console.log(action.payload);
+    doSagaAuth: (state, action: PayloadAction<IAuthFormValues>) => {
       state.isLoading = true;
       state.errorCode = undefined;
       state.errorMessage = undefined;

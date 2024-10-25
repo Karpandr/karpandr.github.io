@@ -9,10 +9,10 @@ const cartSlice = createSlice({
     addProduct: (state, { payload: product }) => {
       const existingProduct = state.find((p) => p.id === product.id);
       if (existingProduct) {
-        existingProduct.count = product.count;
         if (product.count === 0) {
           return state.filter((p) => p.id !== product.id);
         }
+        existingProduct.count = product.count;
       } else {
         state.push(product);
       }

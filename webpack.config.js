@@ -1,4 +1,5 @@
 const path = require('path');
+// var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -25,7 +26,12 @@ module.exports = (_, args) => {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
         src,
-        // "@": path.resolve(__dirname, "src")
+        '@shared': `${src}/shared`,
+        '@app': `${src}/app`,
+        '@entities': `${src}/entities`,
+        '@pages': `${src}/pages`,
+        '@features': `${src}/features`,
+        '@widgets': `${src}/widgets`,
       },
     },
 
@@ -101,6 +107,9 @@ module.exports = (_, args) => {
           configFile: path.join(__dirname, 'tsconfig.json'),
         },
       }),
+      // new webpack.ProvidePlugin({
+      //   process: 'process/browser',
+      // }),
     ],
   };
 };

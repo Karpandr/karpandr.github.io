@@ -3,14 +3,14 @@ import { v4 } from 'uuid';
 export type Category = {
   id: string;
   name: string;
-  image?: string;
+  photo?: string;
 };
 
 export type Product = {
   id: string;
   name: string;
-  image: string;
-  description?: string;
+  photo: string;
+  desc?: string;
   createdAt: string;
   oldPrice?: number;
   price: number;
@@ -22,7 +22,7 @@ export type ProductInCart = Product & { count: number };
 interface IOperation {
   id: string;
   name: string;
-  description?: string;
+  desc?: string;
   createdAt: string;
   amount: number;
   category: Category;
@@ -69,11 +69,11 @@ export const createRandomProduct = (): Product => {
     id: productId,
     name: name,
     // image: `/static/images/products/${productId}.png`,
-    image: `https://cdn.3dmodels.org/wp-content/uploads/Apple/588_Apple_iPhone_15_Plus_Blue/Apple_iPhone_15_Plus_Blue_1000_0001.jpg`,
+    photo: `https://cdn.3dmodels.org/wp-content/uploads/Apple/588_Apple_iPhone_15_Plus_Blue/Apple_iPhone_15_Plus_Blue_1000_0001.jpg`,
     createdAt: createdAt,
     oldPrice: price < 4000 ? price * 1.3 : null, //иногда заполняем старую цену
     price: price,
-    description: `Cool description of ${name}`,
+    desc: `Cool description of ${name}`,
     category: category,
   };
 };
@@ -92,7 +92,7 @@ export const createRandomOperation = (createdAt: string): Operation => {
   return {
     id: v4(),
     name: product.name,
-    description: product.description,
+    desc: product.desc,
     createdAt: createdAt,
     amount: product.price,
     category: product.category,

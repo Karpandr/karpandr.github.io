@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import ProductList from 'src/entities/ProductList/ProductList';
+import ProductList from 'src/entities/ProductList/ui/ProductList';
 import s from './Home.module.sass';
 
 export const Home: FC = () => {

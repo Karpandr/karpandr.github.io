@@ -6,17 +6,17 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from 'src/app/store/cart';
 import s from './ProductCard.module.sass';
 
-interface ProductCardProps {
+interface IProductCardProps {
   id: string;
   price: number;
-  image: string;
+  photo: string;
   name: string;
-  description: string;
+  desc: string;
   category: Category;
   observerClassName: string;
 }
 
-const ProductCard = ({ observerClassName, id, price, image, name, description }: ProductCardProps) => {
+export const ProductCard = ({ observerClassName, id, price, photo, name, desc }: IProductCardProps) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(0);
 
@@ -26,9 +26,9 @@ const ProductCard = ({ observerClassName, id, price, image, name, description }:
       cartActions.addProduct({
         id,
         price,
-        image,
+        photo,
         name,
-        description,
+        desc,
         count: count + 1,
       } as ProductInCart)
     );
@@ -40,9 +40,9 @@ const ProductCard = ({ observerClassName, id, price, image, name, description }:
       cartActions.addProduct({
         id,
         price,
-        image,
+        photo,
         name,
-        description,
+        desc,
         count: count ? count - 1 : count,
       } as ProductInCart)
     );
@@ -55,13 +55,11 @@ const ProductCard = ({ observerClassName, id, price, image, name, description }:
 
   return (
     <div className={cn(observerClassName, s['product-card'])}>
-      <img src={image} alt={name} className={s['product-card__image']} />
+      <img src={photo} alt={name} className={s['product-card__image']} />
       <p>{name}</p>
-      <p className={s['product-card__description']}>{description}</p>
-      <p>{price}$</p>
+      <p className={s['product-card__description']}>{desc}</p>
+      <p>{price}&#8381;</p>
       <Basket count={count} onIncrease={onIncrease} onDecrease={onDecrease} onDeleteClick={onDeleteClick} />
     </div>
   );
 };
-
-export default ProductCard;
