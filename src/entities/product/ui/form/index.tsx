@@ -20,10 +20,26 @@ export interface IProductForm<Values> {
   categories: ICategory[];
   submitButtonCaption: string;
   onFormSubmit: (values: Values, actions: ProductFormActions<Values>) => void;
+  name?: string;
+  price?: number;
+  oldPrice?: number;
+  desc?: string;
+  photo?: string;
+  categoryId?: string;
 }
 
 export const ProductForm = memo(
-  ({ submitButtonCaption, onFormSubmit, categories }: IProductForm<IProductFormValues>) => {
+  ({
+    submitButtonCaption,
+    onFormSubmit,
+    categories,
+    name,
+    price,
+    oldPrice,
+    desc,
+    photo,
+    categoryId,
+  }: IProductForm<IProductFormValues>) => {
     const { t } = useTranslation();
 
     const validate = (values: IProductFormValues) => {
@@ -36,12 +52,12 @@ export const ProductForm = memo(
 
     const formManager = useFormik<IProductFormValues>({
       initialValues: {
-        name: '',
-        price: undefined,
-        oldPrice: undefined,
-        desc: '',
-        photo: '',
-        categoryId: '',
+        name: name ?? '',
+        price: price ?? undefined,
+        oldPrice: oldPrice ?? undefined,
+        desc: desc ?? '',
+        photo: photo ?? '',
+        categoryId: categoryId ?? undefined,
       },
       onSubmit: onFormSubmit,
       validate: validate,

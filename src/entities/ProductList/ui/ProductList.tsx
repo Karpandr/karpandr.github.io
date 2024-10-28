@@ -6,6 +6,8 @@ import { productsActions, useProductsSelector } from 'src/app/store/products';
 import { useTokenSelector } from 'src/app/store/token';
 import { getProducts } from 'src/entities/product/api/requests';
 import s from './ProductList.module.sass';
+import { getCategories } from 'src/entities/category';
+import { categoriesActions } from 'src/app/store/categories';
 
 const OBSERVER_CLASS_NAME = 'observer-product';
 
@@ -26,6 +28,9 @@ export const ProductList: FC = (): ReactElement => {
 
   useInsertionEffect(() => {
     getNextProducts(token, 1);
+    getCategories(token).then((response) => {
+      dispatch(categoriesActions.setCategories(response.data));
+    });
   }, [token]);
 
   const observerCalback = (entries: IntersectionObserverEntry[]) => {
@@ -46,7 +51,7 @@ export const ProductList: FC = (): ReactElement => {
   return (
     <div className={s.root}>
       {products?.length > 0 &&
-        products.map(({ id, name, photo, desc, price, category }) => {
+        products.map(({ id, name, photo, desc, price, oldPrice, category }) => {
           return (
             <ProductCard
               key={id}
@@ -54,6 +59,7 @@ export const ProductList: FC = (): ReactElement => {
               name={name}
               photo={photo}
               price={price}
+              oldPrice={oldPrice}
               desc={desc}
               category={category}
               observerClassName={OBSERVER_CLASS_NAME}

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from 'src/pages/Navigation/ProtectedRoute';
-// import { ProtectedAdminRoute } from 'src/pages/Navigation/ProtectedAdminRoute';
 import { CategoryPage } from 'src/pages/category';
 import { Profile } from 'src/pages/Profile/Profile';
 import { Cart } from 'src/pages/Cart/Cart';
@@ -10,6 +9,7 @@ import { Home } from 'src/pages/Home/Home';
 import { NotFound } from 'src/pages/not-found';
 import { Auth } from 'src/pages/Auth/Auth';
 import { ROUTES } from 'src/shared/config';
+import { LoggedOut } from 'src/pages/logged_out';
 
 export const Routing: FC = () => (
   <Routes>
@@ -25,15 +25,8 @@ export const Routing: FC = () => (
     />
     <Route path={ROUTES.PRODUCT} element={<Product visible={true} />} />
     <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
-    {/* <Route
-      path={ROUTES.PRODUCT}
-      element={
-        <ProtectedAdminRoute>
-          <Product visible={true} />
-        </ProtectedAdminRoute>
-      }
-    /> */}
     <Route path={ROUTES.AUTH} element={<Auth visible={true} />} />
     <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
+    <Route path={ROUTES.LOGGED_OUT} element={<LoggedOut visible={true} />} />
   </Routes>
 );

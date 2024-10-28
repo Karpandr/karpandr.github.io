@@ -45,6 +45,9 @@ export const resources = {
             save: 'Change',
           },
         },
+        logout: {
+          content: 'You have been logged out',
+        },
         ExamplesScreen: {
           title: 'Examples',
         },
@@ -191,6 +194,7 @@ export const resources = {
         Basket: {
           toCart: 'To cart',
           deleteFromCart: 'Delete',
+          update: 'Update',
         },
         RemoveButton: {
           title: 'Data will be lost, delete?',
@@ -293,6 +297,9 @@ export const resources = {
         },
         ExamplesScreen: {
           title: 'Примеры',
+        },
+        logout: {
+          content: 'Вы вышли с сайта',
         },
         LessonsScreen: {
           title: 'Уроки',
@@ -440,6 +447,7 @@ export const resources = {
         Basket: {
           toCart: 'В корзину',
           deleteFromCart: 'Удалить',
+          update: 'Изменить',
         },
         RemoveButton: {
           title: 'Данные будут потеряны, удалить?',

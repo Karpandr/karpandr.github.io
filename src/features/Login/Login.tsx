@@ -19,7 +19,7 @@ export const Login: FC = () => {
   const onSignOutClick = () => {
     dispatch(tokenActions.clear());
     dispatch(profileActions.clearProfile());
-    navigate(ROUTES.HOME);
+    navigate(ROUTES.LOGGED_OUT);
   };
 
   return (
