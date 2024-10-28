@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../entities/Logo/Logo';
-import { ThemeSwitcher } from 'src/features/ThemeSwitcher';
+import { ThemeSwitcher } from 'src/features/theme-switcher';
 import { LangSwitcher } from 'src/features/LangSwitcher';
 import { Navigation } from 'src/pages/Navigation/Navigation';
 import { Login } from 'src/features/Login/Login';

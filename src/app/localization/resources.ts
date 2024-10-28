@@ -7,6 +7,8 @@ export const resources = {
       errors: {
         unexpected_error: 'Unexpected error. We automatically register errors and will fix everything soon',
         'Failed to fetch': 'Connection error. Go to the server directory and start the server using the start script',
+        ERR_UNKNOWN_ERROR: 'Unknown error',
+        ERR_UNKNOWN_RESPONSE_FORMAT: 'Unknown response format',
         ERR_NO_PERMISSIONS: "You don't have permission",
         ERR_PAGE_NOT_FOUND: 'Page not found',
         ERR_BELOW_ZERO: 'Cost is below zero',
@@ -20,6 +22,7 @@ export const resources = {
         ERR_ACCOUNT_ALREADY_EXIST: 'An account with this email already exists',
         ERR_INVALID_PASSWORD: 'The password must contain at least 8 characters',
         ERR_INVALID_EMAIL: 'Invalid email',
+        ERR_INVALID_IMAGE_LINK: 'Invalid photo link',
         ERR_TOKEN_REQUIRED_ERROR:
           'Server token error. We automatically register all errors and will fix everything soon',
         ERR_AUTH_ERROR: 'You are not logged in, log in to your account and try again',
@@ -41,6 +44,9 @@ export const resources = {
             success: 'Password changed successfully',
             save: 'Change',
           },
+        },
+        logout: {
+          content: 'You have been logged out',
         },
         ExamplesScreen: {
           title: 'Examples',
@@ -65,10 +71,15 @@ export const resources = {
         profile: 'Profile',
         cart: 'Cart',
         product: 'Product',
+        category: 'Category',
+      },
+      pages: {
+        Cart: {
+          OrderButtonTitle: 'Order',
+        },
       },
       forms: {
-        LoginForm: {
-          title: 'Sign in',
+        AuthForm: {
           email: {
             title: 'Email',
             placeholder: 'Enter email',
@@ -77,22 +88,31 @@ export const resources = {
             title: 'Password',
             placeholder: 'Enter password',
           },
-          submitButton: {
-            title: 'Sign in',
+          signIn: {
+            headerTitle: 'Sign In',
+            buttonTitle: 'Sign in',
+          },
+          signUp: {
+            headerTitle: 'Sign Up',
+            buttonTitle: 'Sign Up',
           },
         },
-        RegisterForm: {
-          title: 'Registration',
-          email: {
-            title: 'Email',
-            placeholder: 'Enter email',
+        CategoryForm: {
+          name: {
+            title: 'Name',
+            placeholder: 'Enter category name',
           },
-          password: {
-            title: 'Password',
-            placeholder: 'Enter password',
+          photo: {
+            title: 'Photo',
+            placeholder: 'Enter link to photo',
           },
-          submitButton: {
-            title: 'Register',
+          create: {
+            headerTitle: 'Create category',
+            buttonTitle: 'Create',
+          },
+          update: {
+            headerTitle: 'Update category',
+            buttonTitle: 'Update',
           },
         },
         ChangePasswordForm: {
@@ -129,32 +149,41 @@ export const resources = {
         },
         ProductForm: {
           title: 'Product',
-          name: {
-            title: 'Name',
-            placeholder: 'Enter product name',
+          fields: {
+            name: {
+              title: 'Name',
+              placeholder: 'Enter product name',
+            },
+            desc: {
+              title: 'Description',
+              placeholder: 'Enter product description',
+            },
+            price: {
+              title: 'Price',
+              placeholder: 'Enter product price',
+            },
+            oldPrice: {
+              title: 'Old Price',
+              placeholder: 'Enter old product price',
+            },
+            photo: {
+              title: 'Photo',
+              placeholder: 'Enter product image URL',
+            },
+            category: {
+              title: 'Product category',
+              placeholder: 'Enter product category',
+            },
           },
-          description: {
-            title: 'Description',
-            placeholder: 'Enter product description',
-          },
-          price: {
-            title: 'Price',
-            placeholder: 'Enter product price',
-          },
-          oldPrice: {
-            title: 'Old Price',
-            placeholder: 'Enter old product price',
-          },
-          image: {
-            title: 'Image',
-            placeholder: 'Enter product image URL',
-          },
-          category: {
-            title: 'Product category',
-            placeholder: 'Enter product category',
-          },
-          submitButton: {
-            title: 'Save',
+          actions: {
+            create: {
+              headerTitle: 'Create product',
+              buttonTitle: 'Create',
+            },
+            update: {
+              headerTitle: 'Update product',
+              buttonTitle: 'Update',
+            },
           },
         },
       },
@@ -165,6 +194,7 @@ export const resources = {
         Basket: {
           toCart: 'To cart',
           deleteFromCart: 'Delete',
+          update: 'Update',
         },
         RemoveButton: {
           title: 'Data will be lost, delete?',
@@ -226,6 +256,8 @@ export const resources = {
         unexpected_error: 'Неожиданная ошибка. Мы автоматически регистрируем ошибки и скоро все исправим',
         'Failed to fetch':
           'Ошибка соединения. Перейдите в директорию server и запустите сервер с помощью скрипта start',
+        ERR_UNKNOWN_ERROR: 'Неизвестная ошибка',
+        ERR_UNKNOWN_RESPONSE_FORMAT: 'Неизвестный формат ответа',
         ERR_NO_PERMISSIONS: 'У Вас нет прав доступа',
         ERR_PAGE_NOT_FOUND: 'Страница не найдена',
         ERR_IS_REQUIRED: 'Обязательное поле',
@@ -239,6 +271,7 @@ export const resources = {
         ERR_ACCOUNT_ALREADY_EXIST: 'Аккаунт с таким email уже существует',
         ERR_INVALID_PASSWORD: 'Пароль должен содержать от 8 символов',
         ERR_INVALID_EMAIL: 'Некорректный email',
+        ERR_INVALID_IMAGE_LINK: 'Некорректная ссылка на фото',
         ERR_TOKEN_REQUIRED_ERROR:
           'Серверная ошибка токена. Мы автоматически регистрируем все ошибки и скоро все исправим',
         ERR_AUTH_ERROR: 'Вы не авторизованы, войдите в учетную запись и повторите попытку',
@@ -265,6 +298,9 @@ export const resources = {
         ExamplesScreen: {
           title: 'Примеры',
         },
+        logout: {
+          content: 'Вы вышли с сайта',
+        },
         LessonsScreen: {
           title: 'Уроки',
         },
@@ -285,10 +321,15 @@ export const resources = {
         profile: 'Профиль',
         cart: 'Корзина',
         product: 'Продукт',
+        category: 'Категория',
+      },
+      pages: {
+        Cart: {
+          OrderButtonTitle: 'Заказать',
+        },
       },
       forms: {
-        LoginForm: {
-          title: 'Вход',
+        AuthForm: {
           email: {
             title: 'Email',
             placeholder: 'Укажите email',
@@ -297,22 +338,31 @@ export const resources = {
             title: 'Пароль',
             placeholder: 'Укажите пароль',
           },
-          submitButton: {
-            title: 'Войти',
+          signIn: {
+            headerTitle: 'Вход',
+            buttonTitle: 'Войти',
+          },
+          signUp: {
+            headerTitle: 'Регистрация',
+            buttonTitle: 'Зарегистрироваться',
           },
         },
-        RegisterForm: {
-          title: 'Регистрация',
-          email: {
-            title: 'Email',
-            placeholder: 'Укажите email',
+        CategoryForm: {
+          name: {
+            title: 'Название',
+            placeholder: 'Укажите название категории',
           },
-          password: {
-            title: 'Пароль',
-            placeholder: 'Укажите пароль',
+          photo: {
+            title: 'Фото',
+            placeholder: 'Укажите ссылку на фото',
           },
-          submitButton: {
-            title: 'Зарегистрироваться',
+          create: {
+            headerTitle: 'Создать категорию',
+            buttonTitle: 'Создать',
+          },
+          update: {
+            headerTitle: 'Обновить категорию',
+            buttonTitle: 'Обновить',
           },
         },
         ChangePasswordForm: {
@@ -349,32 +399,44 @@ export const resources = {
         },
         ProductForm: {
           title: 'Продукт',
-          name: {
-            title: 'Название',
-            placeholder: 'Введите название продукта',
+          fields: {
+            name: {
+              title: 'Название',
+              placeholder: 'Введите название продукта',
+            },
+            desc: {
+              title: 'Описание',
+              placeholder: 'Введите описание',
+            },
+            price: {
+              title: 'Цена',
+              placeholder: 'Введите цену',
+            },
+            oldPrice: {
+              title: 'Старая цена',
+              placeholder: 'Введите старую цену',
+            },
+            photo: {
+              title: 'Фото',
+              placeholder: 'Введите URL фото',
+            },
+            category: {
+              title: 'Кстегория',
+              placeholder: 'Введите категорию',
+            },
+            submitButton: {
+              title: 'Сохранить',
+            },
           },
-          description: {
-            title: 'Описание',
-            placeholder: 'Введите описание',
-          },
-          price: {
-            title: 'Цена',
-            placeholder: 'Введите цену',
-          },
-          oldPrice: {
-            title: 'Старая цена',
-            placeholder: 'Введите старую цену',
-          },
-          image: {
-            title: 'Описание',
-            placeholder: 'Введите описание',
-          },
-          category: {
-            title: 'Кстегория',
-            placeholder: 'Введите категорию',
-          },
-          submitButton: {
-            title: 'Сохранить',
+          actions: {
+            create: {
+              headerTitle: 'Создать товар',
+              buttonTitle: 'Создать',
+            },
+            update: {
+              headerTitle: 'Обновить товар',
+              buttonTitle: 'Обновить',
+            },
           },
         },
       },
@@ -385,6 +447,7 @@ export const resources = {
         Basket: {
           toCart: 'В корзину',
           deleteFromCart: 'Удалить',
+          update: 'Изменить',
         },
         RemoveButton: {
           title: 'Данные будут потеряны, удалить?',

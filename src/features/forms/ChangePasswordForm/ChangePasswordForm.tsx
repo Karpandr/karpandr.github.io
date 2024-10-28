@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'src/shared/buttons/Button/Button';
+import { Button } from 'src/shared/ui/button';
 import { isUndefiend } from 'src/shared/forms/lib/validation';
 import { PasswordFormField } from 'src/shared/forms/fields/PasswordFormField';
 
@@ -77,7 +77,7 @@ export const ChangePasswordForm = memo(() => {
         title={t('forms.ChangePasswordForm.repeatPassword.title')}
         placeholder={t('forms.ChangePasswordForm.repeatPassword.placeholder')}
       />
-      <Button type="submit" variant="primary" size="small" onClick={handleSubmit}>
+      <Button type="button" onClick={() => handleSubmit()}>
         {t('forms.ChangePasswordForm.submitButton.title')}
       </Button>
     </>

@@ -7,6 +7,9 @@ export const isInvalidEmail = (str?: string): boolean => {
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   ).test(str);
 };
+export const isInvalidImageLink = (str?: string): boolean => {
+  return new RegExp(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gim).test(str);
+};
 
 export const getValidateStatus = (errors: unknown, touched: unknown, submitCount: number): ValidateStatus =>
   submitCount && errors && touched ? 'error' : '';

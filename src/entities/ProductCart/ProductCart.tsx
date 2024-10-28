@@ -11,22 +11,22 @@ interface ProductCartProps {
   id: string;
   name: string;
   price: number;
-  image: string;
-  description: string;
+  photo: string;
+  desc: string;
   category: Category;
   count: number;
 }
 
-export const ProductCart = ({ id, name, price, image, description, count }: ProductCartProps) => {
+export const ProductCart = ({ id, name, price, photo, desc, count }: ProductCartProps) => {
   const dispatch = useDispatch();
 
   const onIncrease = () => {
-    dispatch(cartActions.addProduct({ id, price, image, name, description, count: count + 1 } as ProductInCart));
+    dispatch(cartActions.addProduct({ id, price, photo, name, desc, count: count + 1 } as ProductInCart));
   };
 
   const onDecrease = () => {
     dispatch(
-      cartActions.addProduct({ id, price, image, name, description, count: count ? count - 1 : count } as ProductInCart)
+      cartActions.addProduct({ id, price, photo, name, desc, count: count ? count - 1 : count } as ProductInCart)
     );
   };
 
@@ -36,10 +36,10 @@ export const ProductCart = ({ id, name, price, image, description, count }: Prod
 
   return (
     <div className={cn(s['product-card'])}>
-      <img src={image} alt={name} className={s['product-card__image']} />
+      <img src={photo} alt={name} className={s['product-card__image']} />
       <p>{name}</p>
-      <p className={s['product-card__description']}>{description}</p>
-      <p>{price}$</p>
+      <p className={s['product-card__description']}>{desc}</p>
+      <p>{price}&#8381;</p>
       <Basket count={count} onIncrease={onIncrease} onDecrease={onDecrease} onDeleteClick={onDeleteClick} />
     </div>
   );

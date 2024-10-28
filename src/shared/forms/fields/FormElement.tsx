@@ -13,7 +13,6 @@ export type FormElementProps = {
   required?: boolean;
 };
 
-// export const FormElement = memo(({ validateStatus, required, help, className, title, children }: FormElementProps) => {
 export const FormElement = memo(({ validateStatus, help, children }: FormElementProps) => {
   return (
     <div>

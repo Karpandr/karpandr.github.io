@@ -1,17 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { RootState } from './store';
-import { Product, createRandomProducts } from 'src/entities/ProductCard/types';
-
-const PRODUCTS_PER_PAGE = 20;
+import { IProduct, IProductsResponse } from 'src/entities/product';
 
 const productsSlice = createSlice({
   name: 'products',
-  initialState: createRandomProducts(PRODUCTS_PER_PAGE) as Product[],
+  initialState: {
+    products: [] as IProduct[],
+    pageNumber: 1,
+  },
   reducers: {
-    addNext: (state) => {
-      return state.concat(createRandomProducts(PRODUCTS_PER_PAGE));
+    addNext: (state, action: PayloadAction<IProductsResponse>) => {
+      state.products = state.products.concat(action.payload.data);
+      state.pageNumber = action.payload.pagination.pageNumber;
     },
-    clear: () => [],
+    clear: (state) => {
+      state.products = [] as IProduct[];
+      state.pageNumber = 1;
+    },
   },
 });
 
@@ -20,5 +26,6 @@ export const productsSelectors = {
     return state.products;
   },
 };
+export const useProductsSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const products = productsSlice.reducer;
 export const productsActions = productsSlice.actions;

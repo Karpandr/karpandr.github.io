@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'src/shared/buttons/Button/Button';
+import { Button } from 'src/shared/ui/button';
 import { TextFormField } from 'src/shared/forms/fields/TextFormField';
 import { TextAreaFormField } from 'src/shared/forms/fields/TextAreaFormField';
 
@@ -59,7 +59,7 @@ export const UserForm: FC = () => {
         title={t('forms.UserForm.about.title')}
         placeholder={t('forms.UserForm.about.title')}
       />
-      <Button type="submit" variant="primary" size="small" onClick={handleSubmit}>
+      <Button type="button" onClick={() => handleSubmit()}>
         {t('forms.UserForm.submitButton.title')}
       </Button>
     </form>

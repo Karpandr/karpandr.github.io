@@ -1,9 +1,9 @@
-import React, { FC, useState, useTransition, Children } from 'react';
+import React, { FC, useState, useTransition, Children, ReactElement } from 'react';
 import { ITab, Tab } from '../Tab/Tab';
 import s from './TabView.module.sass';
 
 export interface ITabView {
-  children?: React.ReactElement<ITab>[] | React.ReactElement<ITab>;
+  children?: ReactElement<ITab>[] | ReactElement<ITab>;
   initialTabKey: string;
 }
 
@@ -20,7 +20,7 @@ export const TabView: FC<ITabView> = ({ children, initialTabKey }) => {
 
   return (
     <div>
-      {Children.map(arrayChildren, (child: React.ReactElement<ITab>) => {
+      {Children.map(arrayChildren, (child: ReactElement<ITab>) => {
         return (
           <Tab
             {...child.props}
@@ -30,7 +30,7 @@ export const TabView: FC<ITabView> = ({ children, initialTabKey }) => {
         );
       })}
       <div className={s.content}>
-        {Children.map(arrayChildren, (child: React.ReactElement<ITab>) => {
+        {Children.map(arrayChildren, (child: ReactElement<ITab>) => {
           if (child.props.tabKey === tabKey) {
             return child.props.children;
           }

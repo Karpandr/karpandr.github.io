@@ -1,17 +1,12 @@
-import axios from 'axios';
-import { API_URL } from 'src/shared/api/settings';
-import { IProfile } from '../model/profile';
+import { apiInstance } from '@shared/api';
+import { IProfile, isProfile } from 'src/entities/Profile/types';
+import { APIError } from 'src/shared/api/errors/ApiError';
 
-export interface IProfileApi extends IProfile {
-  commandId: string;
-}
+export const URL_PROFILE = '/profile';
 
-export const getProfile = async (token: string) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  const result = await axios.get(`${API_URL}/profile`, config);
-  return result.data;
+export const getProfile = async (token: string): Promise<IProfile> => {
+  const responseData = await apiInstance(token).get<IProfile>(URL_PROFILE);
+  if (isProfile(responseData))
+    throw new APIError('Server error: Unknown Response format', 'ERR_UNKNOWN_RESPONSE_FORMAT');
+  return responseData;
 };
